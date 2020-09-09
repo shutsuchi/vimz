@@ -11,6 +11,7 @@ import 'vuetify/dist/vuetify.min.css'
 import App from '../app.vue'
 
 Vue.use(Vuetify)
+Vue.config.devtools = true;
 
 const vuetify = new Vuetify();
 
