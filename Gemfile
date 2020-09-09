@@ -31,6 +31,15 @@ gem 'bootsnap', '>= 1.4.2', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  # Test
+  gem 'rspec-rails', '~> 4.0.1'
+  gem 'factory_bot_rails', '~> 6.1.0'
+  gem 'faker', '~> 2.13.0'
+  # Static code analysis tool
+  gem 'rubocop', '~> 0.90.0', require: false
+  gem 'rubocop-performance', '~> 1.8.0', require: false
+  gem 'rubocop-rails', '~> 2.8.0', require: false
+  gem 'rubocop-rspec', '~> 1.43.2'
 end
 
 group :development do
@@ -40,6 +49,8 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  # Show scheme info
+  gem 'annotate', '~> 3.1.1'
 end
 
 group :test do
@@ -52,3 +63,17 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+# Env file and mng
+gem 'dotenv-rails', '~> 2.7.6'
+
+# User authentication
+gem 'devise', '~> 4.7.2'
+gem 'devise_token_auth', '~> 1.1.3'
+gem 'omniauth', '~> 1.9.1'
+gem 'omniauth-twitter', '~> 1.4.0'
+gem 'omniauth-google-oauth2', '~> 0.8.0'
+
+# Cross Origin Resource Sharing
+gem 'rack-cors', '~> 1.1.1'
+
