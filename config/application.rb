@@ -11,9 +11,33 @@ module Vimz
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.0
 
-    # Settings in config/environments/* take precedence over those specified here.
-    # Application configuration can go into files in config/initializers
-    # -- all .rb files in that directory are automatically loaded after loading
-    # the framework and any gems in your application.
+    config.middleware.use Rack::MehodOverride
+    config.middleware.use ActionDispatch::Flash
+    config.middleware.use ActionDispatch::Cookies
+    config.middleware.use ActionDispatch::Session::CookieStore
+
+    config.middleware.insert_before 0, Rack::Cors do
+      allow do
+        origins '*'
+        resource '*',
+          :headers => :any,
+          :expose => %w[access-token expiry token-type uid client],
+          :method => %i[get post options delete put]
+      end
+    end
+
+    config.generators do |g|
+      g.template_engine false
+      g.javascripts false
+      g.stylesheets false
+      g.helper false
+      g.test_framework :rspec,
+        fixtures: true,
+        fixtures_replacement: :factory_bot,
+        view_specs: false,
+        helper_specs: false,
+        controller_specs: false,
+        request_specs: true
+    end
   end
 end
