@@ -26,6 +26,8 @@ module Vimz
       end
     end
 
+    config.api_only = true
+
     config.generators do |g|
       g.template_engine false
       g.javascripts false
